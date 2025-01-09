@@ -7,16 +7,11 @@ use Illuminate\Support\Facades\Http;
 trait TelegramTrait
 {
 
-    protected $token;
-
-    public function __construct()
-    {
-        $this->token = env('TELEGRAM_TOKEN');
-    }
 
     private function sendQuery($query, $params)
     {
-        return Http::post("https://api.telegram.org/bot{$this->token}/$query", $params);
+        $token = env('TELEGRAM_TOKEN');
+        return Http::post("https://api.telegram.org/bot{$token}/$query", $params);
     }
 
     public function sendMessage($chat_id, $message)
