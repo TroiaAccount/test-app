@@ -6,10 +6,14 @@ use Illuminate\Support\Facades\Http;
 
 trait TrelloTrait
 {
+    protected $board_id, $api_key, $api_token;
+    public function __construct()
+    {
+        $this->board_id = env('TRELLO_BOARD_ID');
+        $this->api_key = env('TRELLO_API_KEY');
+        $this->api_token = env('TRELLO_API_TOKEN');
+    }
 
-    protected $board_id = "677e7678af3b05ca030d5372";
-    protected $api_key = "4906b173b483503fd5e579b996b20bb3";
-    protected $api_token = "ATTAe1177d665734d73f7a650edcf56be6674b89b09fd6d94751ede5ca5890ea3dd3B98F719D";
     public function addMemberToBoard($email)
     {
         Http::put("https://api.trello.com/1/boards/$this->board_id/members", [

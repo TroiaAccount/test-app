@@ -7,7 +7,12 @@ use Illuminate\Support\Facades\Http;
 trait TelegramTrait
 {
 
-    protected $token = "7668828231:AAFXm94vjZU2-iQ9hTVMrX_KNr0h9_d07Oo";
+    protected $token;
+
+    public function __construct()
+    {
+        $this->token = env('TELEGRAM_TOKEN');
+    }
 
     private function sendQuery($query, $params)
     {
