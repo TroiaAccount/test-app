@@ -28,7 +28,7 @@ class TrelloController extends Controller
 
         if($user != null && $card_name != null && $before != null && $after != null) {
             $message = "Користувач $user перетягнув '$card_name' з '$before' до '$after'";
-            $chat_id = "-4676508435";
+            $chat_id = "-4799335568";
 
             $this->sendMessage($chat_id, $message);
         }
